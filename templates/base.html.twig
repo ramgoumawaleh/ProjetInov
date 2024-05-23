@@ -1,0 +1,102 @@
+
+<!DOCTYPE HTML>
+<!--
+	TXT by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head
+  <head>
+    <title> {% block title %}Trip {% endblock %}</title>
+    <meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+     {% block Stylesheets %}
+    	<link rel="stylesheet" href="{{asset('assetsf/css/main.css')}}" />
+    			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+     {% endblock  %}
+  </head>
+   {% block header %}
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				
+
+			<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li class="current"><a href="/front">Home</a></li>
+						<li ><a href="{{path('app_activite')}}">Activities</a></li>
+						<li><a href="events.html">events</a></li>
+						<li><a href="posts.html">Posts</a></li>
+					</ul>
+
+					 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                
+				</nav>
+</div>
+
+ {% endblock %}
+  {% block body %} {% endblock %}
+     
+      
+
+{% block footer %}
+<footer id="footer">
+					<div class="container">
+						<div class="row gtr-200">
+							<div class="col-12">
+
+								<!-- About -->
+									<section>
+										<h2 class="major"><span>What's this about?</span></h2>
+										<p>
+											CultureTrip is a low-cost platform that allows people to discover activities and events from different cultures, meet each other, and share the experience by posting statuses
+										</p>
+									</section>
+
+							</div>
+							<div class="col-12">
+
+								<!-- Contact -->
+									<section>
+										<h2 class="major"><span>Get in touch</span></h2>
+										<ul class="contact">
+											<li><a class="icon brands fa-facebook-f" href="#"><span class="label">Facebook</span></a></li>
+											<li><a class="icon brands fa-twitter" href="#"><span class="label">Twitter</span></a></li>
+											<li><a class="icon brands fa-instagram" href="#"><span class="label">Instagram</span></a></li>
+											<li><a class="icon brands fa-dribbble" href="#"><span class="label">Dribbble</span></a></li>
+											<li><a class="icon brands fa-linkedin-in" href="#"><span class="label">LinkedIn</span></a></li>
+										</ul>
+									</section>
+
+							</div>
+						</div>
+			<script src="assetsf/js/jquery.min.js"></script>
+			<script src="assetsf/js/jquery.dropotron.min.js"></script>
+			<script src="assetsf/js/jquery.scrolly.min.js"></script>
+			<script src="assetsf/js/browser.min.js"></script>
+			<script src="assetsf/js/breakpoints.min.js"></script>
+			<script src="assetsf/js/util.js"></script>
+			<script src="assetsf/js/main.js"></script>
+
+	
+{% endblock %}
+     
+    {% block javascripts %}
+  			 <script src="{{asset('assetsf/js/jquery.min.js')}}"></script>
+			<script src="{{asset('assetsf/js/jquery.dropotron.min.js')}}"></script>
+			<script src="{{asset('assetsf/js/jquery.scrolly.min.js')}}"></script>
+			<script src="{{asset('assetsf/js/browser.min.js')}}"></script>
+			<script src="{{asset('assetsf/js/breakpoints.min.js')}}"></script>
+			<script src="{{asset('assetsf/js/util.js')}}"></script>
+			<script src="{{asset('assetsf/js/main.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+     {% endblock  %}
+    <!-- coded by Ragnar-->
+  </body>
+</html>

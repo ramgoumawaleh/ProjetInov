@@ -1,0 +1,90 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Activités{% endblock %}
+
+{% block body %}
+ <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+                    <div class="title-group mb-3">
+   
+    <div class="container mt-5">
+    <div>
+        <a href="{{ path('addacti') }}">
+            <img src="{{ asset('ajouter.png') }}" style="width:30px;height:30px;border:0">
+        </a>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <h4>Liste des activités</h4>
+
+                <div class="card-body">
+                    <table class="table table-hover table-striped table-bordered table-responsive" id="tableac">
+                        <script src="{{ asset('assetsf/js/jquery.min.js') }}"></script>
+                        <input type="text" class="form-control" placeholder="Chercher" id="search">
+                        <br>
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Titre</th>
+                                <th>Description</th>
+                                <th>Image</th>
+                                <th>Prix</th>
+                                <th>Modifier</th>
+                                <th>Supprimer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for activite in activites %}
+                                <tr>
+                                    <td>{{ activite.titre }}</td>
+                                    <td>{{ activite.descrption }}</td>
+                                    <td style="height: 10;width: 10;"><img src="{{ asset('images/' ~ activite.image) }}" style="height:40px;width:40px;"></td>
+                                    <td>{{ activite.prix }}</td>
+                                    <td>
+                                        <a href="{{ path('activiteedit', {'id': activite.id}) }}">
+                                            <img src="{{ asset('modifr.png') }}" style="width:30px;height:30px;border:0">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('activitedelete', {'id': activite.id}) }}">
+                                            <img src="{{ asset('supr.png') }}" style="width:30px;height:30px;border:0">
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            <script>
+                                $(document).ready(function () {
+                                    $('#search').keyup(function () {
+                                        search_table($(this).val());
+                                    });
+
+                                    function search_table(value) {
+                                        $('#tableac tbody tr').each(function () {
+                                            var found = 'false';
+                                            $(this).each(function () {
+                                                if ($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+                                                    found = 'true';
+                                                }
+                                            });
+                                            if (found == 'true') {
+                                                $(this).show();
+                                            } else {
+                                                $(this).hide();
+                                            }
+                                        });
+                                    }
+                                });
+                            </script>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+                </main>
+{% endblock %}

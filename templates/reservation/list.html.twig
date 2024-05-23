@@ -1,0 +1,62 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Activités{% endblock %}
+
+{% block body %}
+ <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+                    <div class="title-group mb-3">
+                    <div class="container mt-5">
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <h4>Liste des réservations</h4>
+                <div class="card-body">
+                    <table class="table table-hover table-striped table-bordered table-responsive" id="tableac">
+                        <script src="{{ asset('back/js/jquery-3.4.1.min.js') }}"></script>
+                        <input type="text" class="form-control" placeholder="Chercher" id="search">
+                        <br>
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Voyage</th>
+                                <th>Activites</th>
+                                <th>Total</th>
+                                <th>Confirmer</th>
+                                <th>Refuser</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for reservation in reservations %}
+                                <tr>
+                                    <td>{{ reservation.user.name }}</td>
+                                    <td>{{ reservation.user.lastname }}</td>
+                                    <td>{{ reservation.activite.titre }}</td>
+                                    <td>{{ reservation.status }}</td>
+                                    <td>{{ reservation.total }}</td>
+                                    <td>
+                                        {% if reservation.status == 'en cours' %}
+                                            <a href="{{ path('confirm_reservation', {'id': reservation.id}) }}">
+                                                <img src="{{ asset('check.png') }}" style="width:30px;height:30px;border:0">
+                                            </a>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if reservation.status == 'en cours' %}
+                                            <a href="{{ path('refuse_reservation', {'id': reservation.id}) }}">
+                                                <img src="{{ asset('refus.png') }}" style="width:30px;height:30px;border:0">
+                                            </a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+{% endblock %}  

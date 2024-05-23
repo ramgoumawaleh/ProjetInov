@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Activités{% endblock %}
+
+{% block body %}
+    <section class="box features">
+        <h2 class="major"><span>Activités</span></h2>
+        <div>
+            <div class="row">
+                {% if activites|length > 0 %}
+                    {% for activite in activites %}
+                        <div class="col-3 col-6-medium col-12-small">
+                            <div class="card h-100 text-center">
+                                <img class="card-img-top" src="{{ asset('images/' ~ activite.image) }}" alt="Image de l'activité">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">{{ activite.titre }}</h5>
+                                    <p class="card-text flex-grow-1">{{ activite.descrption | slice(0, 100) ~ '...' }}</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal{{ activite.id }}">
+                                            Plus d'infos
+                                        </button>
+                                        <a href="{{ path('add_reservation', {'idactivite': activite.id}) }}" class="btn btn-outline-secondary btn-sm">
+                                            Je veux réserver
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal Structure -->
+                        <div class="modal fade" id="modal{{ activite.id }}" tabindex="-1" role="dialog" aria-labelledby="modal{{ activite.id }}Label" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modal{{ activite.id }}Label">{{ activite.titre }}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="{{ asset('images/' ~ activite.image) }}" alt="Image de l'activité" class="img-fluid">
+                                        <p>{{ activite.descrption }}</p>
+                                        <p>Prix : {{ activite.prix }} €</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                        <a href="{{ path('add_reservation', {'idactivite': activite.id}) }}" class="btn btn-primary">
+                                            Réserver maintenant
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="text-center">Aucune activité trouvée.</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

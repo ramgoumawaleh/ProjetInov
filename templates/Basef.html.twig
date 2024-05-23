@@ -1,0 +1,77 @@
+
+<!DOCTYPE HTML>
+<!--
+	TXT by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head
+  <head>
+    <title> {% block title %}Trip {% endblock %}</title>
+    <meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+     {% block Stylesheets %}
+    	<link rel="stylesheet" href="{{asset('assetsf/css/main.css')}}" />
+    
+     {% endblock  %}
+  </head>
+   {% block header %}
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<div class="logo container">
+						<div>
+							
+							<p>Discover the best cultural activities</p>
+						</div>
+					</div>
+				</header>
+
+			<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<img src="{{ asset('assetsf/images\logo.png')}}"  height="70" width="70" align="left">
+						<li><a href="/front">Home</a></li>
+						<li class="current"><a href="Activites.html">Activities</a></li>
+						<li><a href="events.html">events</a></li>
+						<li><a href="posts.html">Posts</a></li>
+					</ul>
+				</nav>
+
+			<!-- Main -->
+				<section id="main">
+					<div class="container">
+						<div class="row">
+							<div class="col-3 col-12-medium">
+								<div class="sidebar">
+
+									<!-- Sidebar -->
+
+									
+										
+										<!-- Something -->
+								</div>
+							</div>
+							<div class="col-9 col-12-medium imp-medium">
+								<div class="content">
+ {% endblock %}
+  {% block body %} {% endblock %}
+     
+      
+
+     
+    {% block javascripts %}
+   <script src="{{asset('assetsf/assets/js/jquery.min.js')}}"></script>
+			<script src="{{asset('assetsf/assets/js/jquery.dropotron.min.js')}}"></script>
+			<script src="{{asset('assetsf/assets/js/jquery.scrolly.min.js')}}"></script>
+			<script src="{{asset('assetsf/assets/js/browser.min.js')}}"></script>
+			<script src="{{asset('assetsf/assets/js/breakpoints.min.js')}}"></script>
+			<script src="{{asset('assetsf/assets/js/util.js')}}"></script>
+			<script src="{{asset('assetsf/assets/js/main.js')}}"></script>
+     {% endblock  %}
+    <!-- coded by Ragnar-->
+  </body>
+</html>

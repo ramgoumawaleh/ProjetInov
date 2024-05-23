@@ -1,0 +1,46 @@
+{# templates/reservation/mes_reservations.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Réservations{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <br>
+        <h1>Mes réservations</h1>
+        <br>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Statut</th>
+                    <th>Nombre de personnes</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reservation in reservations %}
+                    <tr>
+                        <td>
+                            {% if reservation.status == 'en cours' %}
+                                <img src="{{ asset('en cours.jpg') }}" style="width: 50px; height: 50px; border: 0;">
+                            {% elseif reservation.status == 'confirmé' %}
+                                <img src="{{ asset('confirme.png') }}" style="width: 50px; height: 50px; border: 0;">
+                            {% elseif reservation.status == 'annulé' %}
+                                <img src="{{ asset('annule.png') }}" style="width: 30px; height: 30px; border: 0;">
+                            {% else %}
+                                {{ reservation.status }}
+                            {% endif %}
+                        </td>
+                        <td>{{ reservation.nombrepersonne }}</td>
+                        <td>{{ reservation.total }} TND</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">Aucune réclamation trouvée.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br>
+{% endblock %}

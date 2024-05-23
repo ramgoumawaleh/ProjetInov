@@ -1,0 +1,37 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Activités{% endblock %}
+
+{% block body %}
+ <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+                    <div class="title-group mb-3">
+   
+    <div class="container py-4">
+        <div class="card">
+            <div class="card-header">
+                Modifier une activité
+            </div>
+            <div class="card-body">
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}})  }}
+                {% for field in form %}
+                    {% if field.vars.name != '_token' %}
+                        <div class="mb-3 row">
+                            {{ form_label(field, null, {'label_attr': {'class': 'col-md-2 col-form-label'}}) }}
+                            <div class="col-md-10">
+                                {{ form_widget(field, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(field) }}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary">Modifier</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+
+                </main>
+{% endblock %}
